@@ -17,7 +17,6 @@ const testFetch = async (fetchPage) => {
   let result = await resultPromise
   for(let i=0; i<3; i++) {
     let d = result.data[i]
-    // console.log(`      ${d.id}: ${d.original_title}`)
     console.log(`      ${d.id}: ${d.name}`)
   }
 }
