@@ -25,7 +25,7 @@ const outputFolder = './data'
  * 
  * To function, you need to know the server url and how to specify
  * the page number when sending a request to the server. The server
- * is hosted at "https://itec4020-a1.k.nima-dev.com/superheroes". You can
+ * is hosted at "https://itec4020-a1.nima-dev.com/superheroes". You can
  * open this url in your browser to see the information you will
  * receive when making a request. When no page number is specified,
  * the server defaults to page 1. You can see if the server has
@@ -57,7 +57,7 @@ const outputFolder = './data'
  * number, you need to specify the "GET parameter" "pageNum". For example, when
  * you open the following url, you can see that the response shows the
  * parsed pageNum to be 10 instead of the default 1:
- * https://itec4020-a1.k.nima-dev.com/superheroes?pageNum=10
+ * https://itec4020-a1.nima-dev.com/superheroes?pageNum=10
  * 
  * Now that you understand the server's API, let's talk about axios,
  * the library that you will be using to make the request. It is
