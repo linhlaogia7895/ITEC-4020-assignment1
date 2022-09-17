@@ -8,7 +8,7 @@
     "start": "node src/app.js",
     "mkdir": "mkdirp submission",
     "log-to-file": "npm run start > submission/test.log 2>&1",
-    "copy-src": "copyfiles package.json src/* src/**/* submission",
+    "copy-src": "copyfiles package.json src/* src/**/* data/* submission",
     "copy-data": "copyfiles data/**/* submission",
     "prezip": "rimraf submission.zip",
     "zip": "bestzip submission.zip submission/",
