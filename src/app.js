@@ -85,6 +85,16 @@ async function fetchPage(pageNumber) {
    * we can use "await" to get the value of the result from a Promise.
    */
   
+  try{
+    const response = await axios.get('https://itec4020-a1.nima-dev.com/superheroes', {
+      params: {
+        pageNum : pageNumber
+      }
+    })
+    return response.data;
+  } catch(error) {
+    console.error(error);
+  }
 
   // let the progress bar know that you have finished processing a request
   pbar.tick()
@@ -92,7 +102,7 @@ async function fetchPage(pageNumber) {
   /** 
    * TODO: return the object represented by the JSON response
    */
-  return 
+  
 }
 
 /**
@@ -140,11 +150,15 @@ async function fetchSynchronously(pageCount) {
   console.log(`fetching ${pageCount} items synchronously`)
   // creating the progress bar
   pbar.createProgressBar(pageCount)
-
+ 
   // TODO: fetch the results of "pageCount" pages one by one
-  
+  let response = []
+  for (let i = 1; i <= pageCount; i++){
+    response.push(await fetchPage(i));
+  }
   // TODO: return the array containing all responses
-  return
+  // console.log(response)
+  return response
 }
 
 
@@ -168,9 +182,13 @@ async function fetchAsynchronously(pageCount) {
   pbar.createProgressBar(pageCount)
 
   // TODO: fetch results asynchronously (concurrently)
+  const response = []
+  for (let i = 1; i <= pageCount; i++){
+    response.push(fetchPage(i));
+  }
   
   // TODO: return the array containing all responses
-  return
+  return await Promise.all(response)
 }
 
 /**
@@ -189,6 +207,8 @@ async function fetchAsynchronously(pageCount) {
  */
 async function writeJSONToFile(fileName, data) {
   // TODO: write the necessary code
+   fs.writeFile(outputFolder+'/'+fileName, JSON.stringify(data), 'utf-8')
+  
 }
 
 /**
@@ -225,4 +245,5 @@ async function start() {
 
 // calling the start() function
 start()
+
 
